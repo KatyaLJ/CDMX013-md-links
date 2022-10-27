@@ -1,8 +1,20 @@
 const fs = require('fs');
 
-const readFile = (directoryPath) => {
-  let extractLinks = fs.readFileSync(directoryPath[0], 'utf8').match(/\[(.+)\]\((https?:\/\/.+)\)/gi);
-  return extractLinks;
+const readFile = (route) => {
+  let extractLinks = fs.readFileSync(route, 'utf8').match(/\[(.+)\]\((https?:\/\/.+)\)/gi);
+  let resultado= extractLinks.map( (link)=> {
+    let hrefS = link.match(/\((https?:\/\/.+)\)/gi);
+    let textS = link.match(/\[(.+)\]/gi);
+      let obj= {
+        href: hrefS,
+        text: textS,
+        file: route
+      }
+ return obj;
+  });
+  //console.log(resultado);
+  //return extractLinks;
+  return resultado
 }; 
 
 

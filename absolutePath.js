@@ -1,8 +1,8 @@
-const path = require("path");
+const path = require('path');
 
 const absolutePath = (directoryPath) =>{
-    if (!path.isAbsolute(directoryPath[0])){
-       return path.resolve(directoryPath[0]);
+    if (!path.isAbsolute(directoryPath)){
+       return path.resolve(directoryPath);
     }else {
         return directoryPath;
     }

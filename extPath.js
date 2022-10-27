@@ -1,7 +1,7 @@
-const path = require("path");
+const path = require('path');
 
 const extPath = (directoryPath) =>{
-    return path.extname(directoryPath[0]);
+    return path.extname(directoryPath);
      
 }
 
