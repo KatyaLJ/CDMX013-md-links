@@ -1,36 +1,32 @@
-const fetch = require('node-fetch');
+const { onlyValidation } = require('./onlyValidation.js')
 
-//let toObject = {}; 
+const validation = (links) => {
 
-const linkValidation = (links) => {
-    let toObject = {};
-    return new Promise(resolve => {
+    let alllinkstoValidate = links.map(link => {
+        return onlyValidation(link.href).then(respuesta => {
+            link.status = respuesta
+            if (respuesta < 300) {
+                link.message = 'ok'
+            } else {
+                link.message = 'fail'
+            }
+            // stauts code
+            return link
+        }).catch(err => {
+            link.status = err
 
-        const arrayPromiseValidation = []; //array de la validacion de promesas
+            // status code
+            return link
+        })
 
-        links.forEach((link) => {
-
-            fetch(link.href).then(validation => {
-                // console.log();
-                console.log(validation.status, validation.statusText);
-            })
-        .catch(error => {
-                console.log(error.code);
-            });
-    //meter objeto
-        //arrayPromiseValidation.push(validation.status, validation.statusText);
-    });
-    const allPromises = Promise.all(arrayPromiseValidation).then((result => {
-        return result
-    }))
-
-    allPromises.then((allLinks) => {
-        resolve(allLinks)
     })
-})
+    return new Promise((resolve, reject) => {
+        Promise.all(alllinkstoValidate).then(fin => {
+            resolve(fin)
+        })
+    })
 }
 
-
 module.exports = {
-    linkValidation
+    validation
 }
