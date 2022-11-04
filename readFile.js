@@ -1,10 +1,11 @@
 const fs = require('fs');
+const { getLinks } = require('./getLinks');
 
 let cleanHref = "";
 let cleanText = "";
 
 const readFile = (route) => {
-  let extractLinks = fs.readFileSync(route, 'utf8').match(/\[(.+)\]\((https?:\/\/.+)\)/gi);
+  let extractLinks = getLinks(route);
   let resultado = extractLinks.map((link) => {
 
     let hrefS = link.match(/\((https?:\/\/.+)\)/gi);
