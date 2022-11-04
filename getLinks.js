@@ -5,9 +5,6 @@ const getLinks = (route) => {
 
 }
 
-//Array.set(links) */
-//forEach para contar los rotos
-
 module.exports = {
     getLinks
   }
