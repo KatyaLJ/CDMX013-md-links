@@ -15,11 +15,12 @@ const mdLinks = (routeInicial, validateP, statsP) => {
 
   const extMd = (extPath(route));
   if (extMd == '.md') {
-    //console.log(validateOption, statsOption);
+    console.log(validateOption, statsOption);
       /* readFile(route).then(linksAll => validation(linksAll).then(linksTodos => {
       console.log(linksTodos);
     })); */
-      if(validateOption== 'false' && !statsOption){
+      if(/*validateOption== 'false'*/ !validateOption && !statsOption){
+        //console.log(validateOption, statsOption);
         readFile(route).then(linksAll =>
           console.log('sin opción', linksAll));
       }
