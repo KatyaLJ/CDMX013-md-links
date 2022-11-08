@@ -8,7 +8,7 @@ let validateOption = false;
 let statsOption = false;
 
 if(fs.existsSync(args[0]) == true) {
-
+    
     if(args.includes('--validate')){
         validateOption = true;
     }
