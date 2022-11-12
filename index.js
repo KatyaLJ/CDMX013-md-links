@@ -7,12 +7,12 @@ const { validation } = require('./validate.js');
 const { stadistics } = require('./stadistics');
 
 const mdLinks = (routeInicial, validateP, statsP) => {
-  console.log(routeInicial, validateP, statsP);
+  //console.log(routeInicial, validateP, statsP);
   //const directoryPath = process.argv.slice(2);
   const route = absolutePath(routeInicial);
   //console.log(absolutePath(route));
-  const validateOption = validateP;
-  const statsOption = statsP;
+  /* const validateOption = validateP;
+  const statsOption = statsP; */
 
   const extMd = (extPath(route));
   if (extMd == '.md') {
@@ -20,25 +20,25 @@ const mdLinks = (routeInicial, validateP, statsP) => {
       /* readFile(route).then(linksAll => validation(linksAll).then(linksTodos => {
       console.log(linksTodos);
     })); */
-      if(!validateOption && !statsOption){
+      if(!validateP && !statsP){
         //console.log(validateOption, statsOption);
-        readFile(route).then(linksAll =>
-          console.log(linksAll));
+        readFile(route).then(links =>
+          console.log(links));
       }
-      if(validateOption && !statsOption){
+      else if(validateP && !statsP){
         readFile(route).then(linksAll => validation(linksAll).then(linksTodos => {
           console.log(linksTodos);
         }));
       }
-      if(!validateOption && statsOption){
+      else if(!validateP && statsP){
         stadistics(route);
       }
-      if(validateOption && statsOption) {
+      else if(validateP && statsP) {
         readFile(route).then(linksAll => validation(linksAll).then(linksTodos => {
           console.log(linksTodos);
         }));
         stadistics(route);
-      }
+      } 
      
   } else {
     console.log("el archivo no es .md");

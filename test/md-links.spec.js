@@ -3,7 +3,7 @@ const { extPath } = require('../extPath.js');
 const { getLinks } = require('../getLinks.js');
 const { readFile } = require('../readFile.js');
 const { onlyValidation } = require('../onlyValidation')
-const { validation } = require('../validate.js')
+//const { validation } = require('../validate.js')
 
 describe('test absolute path', () => {
   test('absolutePath es una función?', () => {
@@ -12,10 +12,10 @@ describe('test absolute path', () => {
   test('devuelve una ruta absoluta', () => {
     expect(typeof absolutePath('C:\Users\Katya\CDMX013-md-links\README.md')).toBe('string')
   })
-  test('testeando return', () => {
-   return expect( typeof absolutePath('README.md')).resolves.toBe('string');
+  /*test('testeando return', () => {
+  return expect(absolutePath('../CDMX013-md-links\\README.md')).resolves.toBe('C:\\Users\\Katya\\CDMX013-md-links\\README.md');
   })
-  /* test('testeando return', () => {
+  test('testeando return', () => {
     return expect(absolutePath('./test/mdtest/test.md')).resolves.toBe('C:\\Users\\Laboratoria\\Desktop\\LABORATORIA\\CDMX013-md-links\\test\\mdtest\\test.md');
   }) */
 
@@ -60,15 +60,15 @@ describe('test onlyValidation', () => {
    });  
  })
 
-describe('test validation', () => {
+/*describe('test validation', () => {
   test('validation es una función?', () => {
     expect(typeof validation).toBe('function')
   })
- /*  test('el estatus es 200', () => {
+   test('el estatus es 200', () => {
     return expect(validation("https://nodejs.org/es/")).resolves.toBeLeesThan('400');
    })
   test('el estatus es fail', () => {
     return expect(validation("https://nodejs.or")).rejects.toMatch('fail');
-   }); */  
-})
+   });  
+})*/
 

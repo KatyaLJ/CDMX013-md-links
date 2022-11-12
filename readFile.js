@@ -25,7 +25,7 @@ const readFile = (route) => {
 
   });
   return new Promise(resolve => {
-    resolve(resultado);
+    resolve(resultado); 
     //console.log(resultado)
   })
 
